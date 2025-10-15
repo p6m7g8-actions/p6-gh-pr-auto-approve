@@ -1,5 +1,5 @@
 name: "P6 GHA: PR Auto Approver"
-description: "P6 GHA: PR Auto ApproveR"
+description: "P6 GHA: PR Auto Approver"
 author: "Philip M. Gollucci"
 
 inputs:
@@ -13,8 +13,7 @@ inputs:
     default: "p6m7g8-automation"
   bot_token:
     description: "The bot account token to use for approving the PR."
-    required: false
-    default: ${{ secrets.P6_A_GH_TOKEN }}
+    required: true
 
 runs:
   using: "composite"
