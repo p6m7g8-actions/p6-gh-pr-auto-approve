@@ -16,6 +16,8 @@ jobs:
     permissions:
       pull-requests: write
     steps:
+      - name: Checkout code Repository
+        uses: actions/checkout@v5.0.0
       - name: Auto-Approve PR
         uses: ./
         with:
