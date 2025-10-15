@@ -1,0 +1,29 @@
+name: "P6 GHA: PR Auto Approver"
+description: "P6 GHA: PR Auto ApproveR"
+author: "Philip M. Gollucci"
+
+inputs:
+  owner:
+    description: "The owner of the repository."
+    required: true
+    default: "p6m7g8"
+  bot:
+    description: "The bot account to use for approving the PR."
+    required: true
+    default: "p6m7g8-automation"
+  bot_token:
+    description: "The bot account token to use for approving the PR."
+    required: false
+    default: ${{ secrets.P6_A_GH_TOKEN }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Auto Approve a PR
+      uses: hmarr/auto-approve-action@v4.0.0
+      if: |
+        !github.event.pull_request.draft &&
+        !contains(github.event.pull_request.labels.*.name, 'do-not-merge') &&
+        (contains(github.event.pull_request.labels.*.name, 'auto-approve') || github.event.pull_request.user.login == ${{ inputs.owner }} || github.event.pull_request.user.login == ${{ inputs.bot }})
+      with:
+        github-token: ${{ inputs.bot_token }}
