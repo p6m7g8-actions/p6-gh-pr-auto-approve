@@ -12,11 +12,13 @@ on:
 jobs:
   approve:
     runs-on: ubuntu-latest
-    name: "Auto Approve PR"
+    name: Auto-Approve PR
     permissions:
       pull-requests: write
     steps:
-      - name: Auto Approve A PR
+      - name: Checkout code Repository
+        uses: actions/checkout@v5.0.0
+      - name: Auto-Approve PR
         uses: ./
         with:
           bot_token: ${{ secrets.P6_A_GH_TOKEN }}
