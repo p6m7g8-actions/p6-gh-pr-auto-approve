@@ -16,6 +16,8 @@ jobs:
     permissions:
       pull-requests: write
     steps:
+      - name: Checkout
+        uses: p6m7g8-actions/checkout@main
       - name: Auto-Approve PR
         uses: ./
         with:
