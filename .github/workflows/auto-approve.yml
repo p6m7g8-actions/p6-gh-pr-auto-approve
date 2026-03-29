@@ -16,9 +16,7 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: Checkout
-        uses: p6m7g8-actions/checkout@main
       - name: Auto-Approve PR
-        uses: ./
+        uses: p6m7g8-actions/p6-gh-pr-auto-approve@main
         with:
           bot_token: ${{ secrets.P6_A_GH_TOKEN }}
